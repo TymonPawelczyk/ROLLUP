@@ -1,7 +1,7 @@
 import datetime as datetime
 import time as time
 
-hour = time.strftime(format)
+hour = time.localtime()
 # datetime.datetime.now().time()
 print(hour)
 
