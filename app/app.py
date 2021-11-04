@@ -18,10 +18,19 @@ json_object = response.json()
 responce_sunrise = str(json_object['results']['sunrise'])
 responce_sunset = str(json_object['results']['sunset'])
 
+
+
+#Formatowanie ver 2
 formatfrom="%Y-%m-%dT%H:%M:%S+00:00"
 formatto="%H:%M:%S"
-print (datetime.strptime(responce_sunrise,formatfrom).strftime(formatto))
-#Formatowanie 
+formatted = (datetime.strptime(responce_sunrise,formatfrom).strftime(formatto))
+formatted = formatted.split(':')
+formatted[0] = (int(formatted[0])) + 1
+print(formatted)
+
+
+
+#Formatowanie ver 1
 sunrise = responce_sunrise.split('T')
 sunset = responce_sunset.split('T')
 sunrise = sunrise[1].partition('+')
@@ -38,8 +47,8 @@ while True:
     minute = str(now.minute)
     seconds = str(now.second)
     CURRENT_TIME_str = (hour+":"+minute+":"+seconds)
-    print(CURRENT_TIME_str)
-    if CURRENT_TIME_str == "10:0:0":
+    print(f'{CURRENT_TIME_str} = {sunrise}')
+    if CURRENT_TIME_str == sunrise:
         print("Otwieranie rolety") #Tutaj odniesienie do wykonania pliku otwierajacego rolety 
         time.sleep(3600)
     else: 
