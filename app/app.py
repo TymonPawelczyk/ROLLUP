@@ -7,15 +7,17 @@ import gpiozero
 
 
 
+#Połaczenie z API
 payload = {'lat' : '50.3657432' , 'lng' : '18.87153251609449' , 'formatted' : '0'}
 url = 'https://api.sunrise-sunset.org/json'
 
-#Połaczenie z API
+#Zapytanie API
 response = requests.get(url, params = payload)
 json_object = response.json()
+sunrise = str(json_object['results']['sunrise'])
 sunset = str(json_object['results']['sunset'])
 
-print(sunset)
+print(sunrise,sunset)
 # print(response.headers["results"])
 
 #Sprawdzanie godziny
