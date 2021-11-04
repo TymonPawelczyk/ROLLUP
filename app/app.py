@@ -13,7 +13,7 @@ url = 'https://api.sunrise-sunset.org/json'
 #Połaczenie z API
 response = requests.get(url, params = payload)
 json_object = response.json()
-sunset = str(json_object['results']['sunrise'])
+sunset = str(json_object['results']['sunset'])
 
 print(sunset)
 # print(response.headers["results"])
