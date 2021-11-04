@@ -1,9 +1,9 @@
 import datetime as datetime
+from datetime import *
 import time as time
 # import calendar as calendar
 import requests as requests
 import json
-import gpiozero
 
 
 
@@ -18,13 +18,14 @@ json_object = response.json()
 responce_sunrise = str(json_object['results']['sunrise'])
 responce_sunset = str(json_object['results']['sunset'])
 
-
+formatfrom="%Y-%m-%dT%H:%M:%S+00:00"
+formatto="%H:%M:%S"
+print (datetime.strptime(responce_sunrise,formatfrom).strftime(formatto))
 #Formatowanie 
 sunrise = responce_sunrise.split('T')
 sunset = responce_sunset.split('T')
 sunrise = sunrise[1].partition('+')
 sunset = sunset[1].partition('+')
-print(sunrise,sunset)
 sunrise = sunrise[0]
 sunset = sunset[0]
 
@@ -32,13 +33,13 @@ print(sunrise,sunset)
 
 #Sprawdzanie godziny
 while True:
-    now = datetime.datetime.now()
+    now = datetime.now()
     hour = str(now.hour)
     minute = str(now.minute)
     seconds = str(now.second)
     CURRENT_TIME_str = (hour+":"+minute+":"+seconds)
     print(CURRENT_TIME_str)
-    if CURRENT_TIME_str == "20:22:40":
+    if CURRENT_TIME_str == "10:0:0":
         print("Otwieranie rolety") #Tutaj odniesienie do wykonania pliku otwierajacego rolety 
         time.sleep(3600)
     else: 
