@@ -36,7 +36,7 @@ while True:
     seconds = str(now.second)
     CURRENT_TIME_str = (hour+":"+minute+":"+seconds)
     print(CURRENT_TIME_str)
-    if CURRENT_TIME_str == "18:11:30":
+    if CURRENT_TIME_str == "20:22:40":
         print("Otwieranie rolety")
         time.sleep(3600)
     else: 
