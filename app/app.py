@@ -25,7 +25,7 @@ formatfrom="%Y-%m-%dT%H:%M:%S+00:00"
 formatto="%H:%M:%S"
 formatted = (datetime.strptime(responce_sunrise,formatfrom).strftime(formatto))
 formatted = formatted.split(':')
-formatted[0] = (int(formatted[0])) + 1
+formatted[0] = str((int(formatted[0])) + 1)
 print(formatted)
 
 
