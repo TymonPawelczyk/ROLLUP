@@ -4,6 +4,7 @@ import time as time
 # import calendar as calendar
 import requests as requests
 import json
+import pandas as pd
 
 
 
@@ -21,34 +22,24 @@ responce_sunset = str(json_object['results']['sunset'])
 
 
 #Formatowanie ver 2
-formatfrom="%Y-%m-%dT%H:%M:%S+00:00"
+formatfrom="%Y-%m-%dT%H:%M:%S%z"
 formatto="%H:%M:%S"
-formatted = (datetime.strptime(responce_sunrise,formatfrom).strftime(formatto))
-formatted = formatted.split(':')
-formatted[0] = str((int(formatted[0])) + 1)
-print(formatted)
+formatted_sunrise_winter = (datetime.strptime(responce_sunrise,formatfrom)+ timedelta(hours=1)).strftime(formatto)
+formatted_sunset_winter = (datetime.strptime(responce_sunset,formatfrom)+ timedelta(hours=1)).strftime(formatto)
 
+print((formatted_sunrise_winter),formatted_sunset_winter)
 
-
-#Formatowanie ver 1
-sunrise = responce_sunrise.split('T')
-sunset = responce_sunset.split('T')
-sunrise = sunrise[1].partition('+')
-sunset = sunset[1].partition('+')
-sunrise = sunrise[0]
-sunset = sunset[0]
-
-print(sunrise,sunset)
 
 #Sprawdzanie godziny
 while True:
     now = datetime.now()
+    print(now)
     hour = str(now.hour)
     minute = str(now.minute)
     seconds = str(now.second)
     CURRENT_TIME_str = (hour+":"+minute+":"+seconds)
-    print(f'{CURRENT_TIME_str} = {sunrise}')
-    if CURRENT_TIME_str == sunrise:
+    print(f'{CURRENT_TIME_str} = {formatted_sunrise_winter}')
+    if CURRENT_TIME_str == formatted_sunrise_winter:
         print("Otwieranie rolety") #Tutaj odniesienie do wykonania pliku otwierajacego rolety 
         time.sleep(3600)
     else: 
