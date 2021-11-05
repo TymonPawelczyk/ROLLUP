@@ -4,7 +4,7 @@ import time as time
 # import calendar as calendar
 import requests as requests
 import json
-import pandas as pd
+
 
 
 
