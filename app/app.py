@@ -1,12 +1,14 @@
 import datetime as datetime
 from datetime import *
 import time as time
+import sched
 # import calendar as calendar
 import requests as requests
 import json
 
 
 
+#Aktualizowanie się czasu wschodu i zachodu
 
 #Połaczenie z API
 payload = {'lat' : '50.5289' , 'lng' : '18.75127' , 'formatted' : '0'}
@@ -30,7 +32,8 @@ formatted_sunset_winter = (datetime.strptime(responce_sunset,formatfrom)+ timede
 print((formatted_sunrise_winter),formatted_sunset_winter)
 
 
-#Sprawdzanie godziny
+
+# #Sprawdzanie godziny zachodu słońca
 while True:
     now = datetime.now()
     hour = str(now.hour)
