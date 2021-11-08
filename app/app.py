@@ -32,14 +32,10 @@ formatted_sunset_winter = (datetime.strptime(responce_sunset,formatfrom)+ timede
 print((formatted_sunrise_winter),formatted_sunset_winter)
 
 
-
 # #Sprawdzanie godziny zachodu słońca
 while True:
     now = datetime.now()
-    hour = str(now.hour)
-    minute = str(now.minute)
-    seconds = str(now.second)
-    CURRENT_TIME_str = (hour+":"+minute+":"+seconds)
+    CURRENT_TIME_str = now.strftime(formatto)
     print(f'{CURRENT_TIME_str} = {formatted_sunset_winter}')
     if CURRENT_TIME_str == formatted_sunset_winter:
         print("Otwieranie rolety") #Tutaj odniesienie do wykonania pliku otwierajacego rolety 
