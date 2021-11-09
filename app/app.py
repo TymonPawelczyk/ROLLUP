@@ -7,7 +7,7 @@ import json
 # import calendar as calendar
 
 
-
+ 
 #Aktualizowanie się czasu wschodu i zachodu
 
 #Połaczenie z API
